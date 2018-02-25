@@ -21,6 +21,5 @@ zuul:
         path: /locations/**
         serviceId: location-service
         stripPrefix: false
-        sensitiveHeaders:
 server:
   port: 4000

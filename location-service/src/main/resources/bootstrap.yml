@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: location-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+      password: s3cr3t
+      username: root
+flyway:
+  enabled: true
+  baseline-on-migrate: true
