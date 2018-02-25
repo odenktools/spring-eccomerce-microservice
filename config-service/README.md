@@ -11,7 +11,7 @@ STEP 2
 ======
 
 ```bash
-java -jar build/libs/config-service-0.0.1-SNAPSHOT.jar
+java -jar -Dserver.port=8888 build/libs/config-service-0.0.1-SNAPSHOT.jar
 
 docker build -t odenktools/spring-config-service:v1 --rm=true .
 ```
