@@ -3,17 +3,18 @@ info:
 spring:
   application:
     name: config-service
+  jmx:
+    default_domain: cloud.config.server
   cloud:
     config:
       server:
-        native:
-          search-locations: classpath:/shared
-  profiles:
-     active: native
+        git:
+          uri: https://github.com/odenktools/spring-cloud-config
 server:
   port: 8888
   address: localhost
-
+management:
+  context_path: /admin
 security:
   user:
    name: root

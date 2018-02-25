@@ -1,9 +1,13 @@
+info:
+  component: Registry Server
 spring:
   application:
     name: registry
+  jmx:
+    default_domain: cloud.config.server
   cloud:
     config:
       uri: http://localhost:8888
       fail-fast: true
-      password: root
-      username: s3cr3t
+      password: s3cr3t
+      username: root
