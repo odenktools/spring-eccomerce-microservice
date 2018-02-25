@@ -1,0 +1,84 @@
+version: '2'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+    container_name: odk-rabbitmq
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  percona-location-service:
+    image: percona:5.5.43
+    ports:
+     - "33060:3306"
+    container_name: percona-location-service
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: odenktools
+      MYSQL_USER: odenktools
+      MYSQL_DATABASE: location_service
+      MYSQL_PASSWORD: odenktools
+
+  percona-account-service:
+    image: percona:5.5.43
+    ports:
+     - "33061:3306"
+    container_name: percona-account-service
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: odenktools
+      MYSQL_USER: odenktools
+      MYSQL_DATABASE: account_service
+      MYSQL_PASSWORD: odenktools
+
+  config-service:
+    image: odenktools/spring-config-service:v1
+    container_name: odk-config-service
+    restart: always
+    ports:
+     - "8888:8888"
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  registry-service:
+    image: odenktools/spring-registry-service:v1
+    container_name: odk-registry-service
+    ports:
+     - "8761:8761"
+    restart: always
+    depends_on: 
+     - odk-config-service
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  gateway:
+    image: odenktools/spring-gateway-service:v1
+    container_name: odk-gateway-service
+    ports:
+      - 80:4000
+    restart: always
+    depends_on: 
+     - odk-config-service
+     - odk-registry-service
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  location-service:
+    image: odenktools/spring-location-service:v1
+    restart: always
+    depends_on: 
+     - odk-config-service
+     - odk-gateway-service
+     - percona-location-service

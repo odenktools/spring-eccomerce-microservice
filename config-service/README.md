@@ -20,13 +20,13 @@ STEP 3
 ======
 
 ```bash
-docker run --name spring-config-service -p 8888:8888 odenktools/config-service:v1
+docker run --name spring-config-service -p 8888:8888 odenktools/spring-config-service:v1
 ```
 
 OR
 
 ```bash
-docker run -p 8888:8888 odenktools/spring-location-service:v1
+docker run -p 8888:8888 odenktools/spring-config-service:v1
 ```
 
 STEP 4
@@ -38,14 +38,14 @@ STEP 5
 ======
 
 ```bash
-docker stop spring-location-service
+docker stop spring-config-service
 ```
 
 STEP 6
 ======
 
 ```bash
-docker start spring-location-service
+docker start spring-config-service
 ```
 
 STEP 7
