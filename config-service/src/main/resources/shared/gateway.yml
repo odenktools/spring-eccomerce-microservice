@@ -1,6 +1,10 @@
 spring:
   application:
     name: gateway
+
+server:
+  port: 4000
+
 hystrix:
   command:
     default:
@@ -8,9 +12,11 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 20000
+
 ribbon:
   ReadTimeout: 20000
   ConnectTimeout: 20000
+
 zuul:
   ignoredServices: '*'
   host:
@@ -21,5 +27,7 @@ zuul:
         path: /locations/**
         serviceId: location-service
         stripPrefix: false
-server:
-  port: 4000
+    account-service:
+        path: /accounts/**
+        serviceId: account-service
+        stripPrefix: false

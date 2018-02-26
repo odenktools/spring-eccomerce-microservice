@@ -1,0 +1,3 @@
+server:
+  context-path: /accounts
+  port: 9002
