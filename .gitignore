@@ -36,7 +36,6 @@ obj/
 local.properties
 *.keystore
 *.zip
-*.sql
 *.exe
 *.dll
 *.rar
