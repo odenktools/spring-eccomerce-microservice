@@ -58,3 +58,29 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+
+  gateway-service:
+    image: odenktools/spring-gateway-service:v1
+    ports:
+     - "4000:4000"
+    restart: always
+    depends_on:
+      - config-service
+
+  location-service:
+    image: odenktools/spring-location-service:v1
+    ports:
+     - "9001:9001"
+    restart: always
+    depends_on:
+      - config-service
+      - percona-location-service
+
+  account-service:
+    image: odenktools/spring-account-service:v1
+    ports:
+     - "9002:9002"
+    restart: always
+    depends_on:
+      - config-service
+      - percona-account-service
