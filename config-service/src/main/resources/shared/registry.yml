@@ -5,8 +5,8 @@ spring:
     config:
       uri: http://localhost:8888
       fail-fast: true
-      password: s3cr3t
       username: root
+      password: secret
 server:
   port: 8761
 eureka:

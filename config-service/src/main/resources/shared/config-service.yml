@@ -13,9 +13,7 @@ spring:
 server:
   port: 8888
   address: localhost
-management:
-  context_path: /admin
 security:
   user:
    name: root
-   password: s3cr3t
+   password: secret

@@ -5,8 +5,8 @@ spring:
     config:
       uri: http://config:8888
       fail-fast: true
-      password: ${CONFIG_SERVICE_PASSWORD}
       username: root
+      password: secret
 flyway:
   enabled: true
   baseline-on-migrate: true

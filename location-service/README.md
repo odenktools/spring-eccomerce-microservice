@@ -55,7 +55,13 @@ docker start spring-location-service
 STEP 7
 ======
 
-http://192.168.99.100:9001/
+```bash
+curl -i http://192.168.99.100:9001/Algeria
+```
+
+```bash
+curl -i http://192.168.99.100:9001/all
+```
 
 
 OTHER FUNCTION

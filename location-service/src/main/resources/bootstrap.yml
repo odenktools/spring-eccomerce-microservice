@@ -5,8 +5,8 @@ spring:
     config:
       uri: http://localhost:8888
       fail-fast: true
-      password: s3cr3t
       username: root
+      password: secret
 flyway:
-  enabled: true
-  baseline-on-migrate: true
+  enabled: false
+  baseline-on-migrate: false

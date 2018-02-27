@@ -8,7 +8,7 @@ hystrix:
 
 eureka:
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: false
   client:
     serviceUrl:
-      defaultZone: http://registry:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
