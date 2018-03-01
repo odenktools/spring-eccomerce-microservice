@@ -2,18 +2,19 @@ package com.odenktools.locationservice.domain;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 @Entity
 @Table(name = "countries")
 public class Countries {
     private int id;
     private String code;
-    private byte active;
+    private int active;
     private String name;
     private String slug;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
-    private Timestamp deletedAt;
+    private Calendar createdAt;
+    private Calendar updatedAt;
+    private Calendar deletedAt;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -37,11 +38,11 @@ public class Countries {
 
     @Basic
     @Column(name = "active", nullable = false)
-    public byte getActive() {
+    public int getActive() {
         return active;
     }
 
-    public void setActive(byte active) {
+    public void setActive(int active) {
         this.active = active;
     }
 
@@ -67,31 +68,31 @@ public class Countries {
 
     @Basic
     @Column(name = "created_at", nullable = true)
-    public Timestamp getCreatedAt() {
+    public Calendar getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(Calendar createdAt) {
         this.createdAt = createdAt;
     }
 
     @Basic
     @Column(name = "updated_at", nullable = true)
-    public Timestamp getUpdatedAt() {
+    public Calendar getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
+    public void setUpdatedAt(Calendar updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     @Basic
     @Column(name = "deleted_at", nullable = true)
-    public Timestamp getDeletedAt() {
+    public Calendar getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(Timestamp deletedAt) {
+    public void setDeletedAt(Calendar deletedAt) {
         this.deletedAt = deletedAt;
     }
 

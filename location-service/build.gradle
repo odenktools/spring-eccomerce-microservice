@@ -63,6 +63,7 @@ dependencies {
 
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:1.4.3.RELEASE')
 	
+	compile group: 'org.json', name: 'json', version: '20170516'
 	compile('org.springframework.cloud:spring-cloud-starter-config')
     compile("org.springframework.retry:spring-retry")
     compile("org.flywaydb:flyway-core")
