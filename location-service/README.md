@@ -56,13 +56,20 @@ STEP 7
 ======
 
 ```bash
-curl -i http://192.168.99.100:9001/Algeria
+http://localhost:9001/locations/Algeria
 ```
 
 ```bash
-curl -i http://192.168.99.100:9001/all
+http://localhost:9001/locations/all
 ```
 
+```bash
+http://localhost:9001/locations/regions/Jakarta
+```
+
+```bash
+http://localhost:9001/locations/regions/all
+```
 
 OTHER FUNCTION
 ==============

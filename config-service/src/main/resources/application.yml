@@ -1,20 +1,18 @@
-info:
-  component: Config Server
 spring:
   application:
-    name: config-service
+    name: config
   cloud:
     config:
+      discovery:
+        enabled: true
       server:
         native:
           search-locations: classpath:/shared
   profiles:
-     active: native
+     active: dev,native
 server:
   port: 8888
-  address: localhost
-
 security:
   user:
-   name: root
-   password: secret
+    name: root
+    password: secret

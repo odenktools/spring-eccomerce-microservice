@@ -1,12 +1,14 @@
+info:
+  component: Account Service
 spring:
   application:
     name: account-service
   cloud:
     config:
-      uri: http://config:8888
+      uri: http://localhost:8888
       fail-fast: true
       username: root
       password: secret
 flyway:
-  enabled: true
-  baseline-on-migrate: true
+  enabled: false
+  baseline-on-migrate: false
