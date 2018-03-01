@@ -1,0 +1,13 @@
+info:
+  component: Gateway Server
+spring:
+  application:
+    name: gateway
+  jmx:
+    default_domain: cloud.config.server
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+      username: root
+      password: secret

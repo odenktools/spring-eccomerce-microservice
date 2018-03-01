@@ -1,3 +1,10 @@
+spring:
+  application:
+    name: gateway
+
+server:
+  port: 4000
+
 hystrix:
   command:
     default:
@@ -15,13 +22,12 @@ zuul:
   host:
     connect-timeout-millis: 20000
     socket-timeout-millis: 20000
-
   routes:
     location-service:
         path: /locations/**
         serviceId: location-service
         stripPrefix: false
-        sensitiveHeaders:
-
-server:
-  port: 4000
+    account-service:
+        path: /accounts/**
+        serviceId: account-service
+        stripPrefix: false

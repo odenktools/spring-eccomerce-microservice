@@ -1,0 +1,14 @@
+info:
+  component: Location Services
+spring:
+  application:
+    name: location-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+      username: root
+      password: secret
+flyway:
+  enabled: false
+  baseline-on-migrate: false

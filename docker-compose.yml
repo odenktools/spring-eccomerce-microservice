@@ -39,7 +39,6 @@ services:
 
   config-service:
     image: odenktools/spring-config-service:v1
-    container_name: odk-config-service
     restart: always
     ports:
      - "8888:8888"
@@ -50,35 +49,38 @@ services:
 
   registry-service:
     image: odenktools/spring-registry-service:v1
-    container_name: odk-registry-service
     ports:
      - "8761:8761"
     restart: always
-    depends_on: 
-     - odk-config-service
+    depends_on:
+      - config-service
     logging:
       options:
         max-size: "10m"
         max-file: "10"
 
-  gateway:
+  gateway-service:
     image: odenktools/spring-gateway-service:v1
-    container_name: odk-gateway-service
     ports:
-      - 80:4000
+     - "4000:4000"
     restart: always
-    depends_on: 
-     - odk-config-service
-     - odk-registry-service
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
+    depends_on:
+      - config-service
 
   location-service:
     image: odenktools/spring-location-service:v1
+    ports:
+     - "9001:9001"
     restart: always
-    depends_on: 
-     - odk-config-service
-     - odk-gateway-service
-     - percona-location-service
+    depends_on:
+      - config-service
+      - percona-location-service
+
+  account-service:
+    image: odenktools/spring-account-service:v1
+    ports:
+     - "9002:9002"
+    restart: always
+    depends_on:
+      - config-service
+      - percona-account-service

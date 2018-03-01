@@ -1,21 +1,2 @@
-spring:
-  application:
-    name: registry
-  cloud:
-    config:
-      uri: http://config:8888
-      fail-fast: true
-      password: root
-      username: s3cr3t
 server:
   port: 8761
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://config:8888/eureka/
-    server:
-      waitTimeInMsWhenSyncEmpty: 0
