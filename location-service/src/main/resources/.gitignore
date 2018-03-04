@@ -1,0 +1,6 @@
+*
+!.gitignore
+!bootstrap.yml
+!db
+!static
+!templates

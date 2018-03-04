@@ -60,15 +60,38 @@ http://localhost:9001/locations/Algeria
 ```
 
 ```bash
-http://localhost:9001/locations/all
+curl -X GET \
+  http://localhost:9001/locations/all \
+  -H 'content-type: application/json'
 ```
 
 ```bash
-http://localhost:9001/locations/regions/Jakarta
+  http://localhost:9001/locations/regions/Jakarta \
+  -H 'content-type: application/json'
 ```
 
 ```bash
-http://localhost:9001/locations/regions/all
+curl -X GET \
+  http://localhost:9001/locations/regions/all \
+  -H 'content-type: application/json'
+```
+
+```bash
+curl -X GET \
+  http://localhost:9001/locations/country/all \
+  -H 'content-type: application/json'
+```
+
+```bash
+curl -X POST \
+  http://localhost:9001/locations/country/create \
+  -H 'content-type: application/json' \
+  -d '{
+	"code": "zz",
+	"active": 1,
+	"name": "zong",
+	"slug": "zong"
+}'
 ```
 
 OTHER FUNCTION

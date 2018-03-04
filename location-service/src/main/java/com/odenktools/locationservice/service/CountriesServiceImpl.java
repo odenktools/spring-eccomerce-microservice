@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import java.math.BigDecimal;
-import java.util.Date;
+import java.util.Calendar;
 
 @Service
 public class CountriesServiceImpl implements CountriesService {
@@ -23,9 +22,18 @@ public class CountriesServiceImpl implements CountriesService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Countries findCountriesByName(String countryName) {
+	public Countries findByName(String countryName) {
 		Assert.hasLength(countryName);
-		return repository.findCountriesByName(countryName);
+		return repository.findByName(countryName);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Countries findByCode(String code) {
+		Assert.hasLength(code);
+		return repository.findByCode(code);
 	}
 
 	/**
@@ -34,5 +42,28 @@ public class CountriesServiceImpl implements CountriesService {
 	@Override
 	public Iterable<Countries> findAllCountries() {
 		return repository.findAll();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Countries create(Countries country) {
+
+		Countries existing = repository.findByCode(country.getCode());
+		Assert.isNull(existing, "country already exists: " + country.getCode());
+
+		Countries countries = new Countries();
+		countries.setCode(country.getCode());
+		countries.setActive(country.getActive());
+		countries.setName(country.getName());
+		countries.setSlug(country.getSlug());
+		countries.setCreatedAt(Calendar.getInstance());
+
+		repository.save(countries);
+
+		log.info("new country has been created: " + country.getName());
+
+		return countries;
 	}
 }

@@ -1,12 +1,22 @@
 package com.odenktools.locationservice.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
-import java.sql.Timestamp;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Calendar;
 
+/**
+ * Countries Model.
+ *
+ * @author odenktools
+ */
 @Entity
-@Table(name = "countries")
-public class Countries {
+@Table(name = "countries",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "email_user_uc", columnNames = {"code", "name", "slug"})})
+public class Countries implements Serializable {
     private int id;
     private String code;
     private int active;
@@ -26,8 +36,10 @@ public class Countries {
         this.id = id;
     }
 
+    @NotNull
+    @NotEmpty
     @Basic
-    @Column(name = "code", nullable = false, length = 2)
+    @Column(name = "code", unique = true, nullable = false, length = 2)
     public String getCode() {
         return code;
     }
@@ -36,6 +48,7 @@ public class Countries {
         this.code = code;
     }
 
+    @NotNull
     @Basic
     @Column(name = "active", nullable = false)
     public int getActive() {
@@ -46,8 +59,10 @@ public class Countries {
         this.active = active;
     }
 
+    @NotNull
+    @NotEmpty
     @Basic
-    @Column(name = "name", nullable = false, length = 255)
+    @Column(name = "name", unique = true, nullable = false)
     public String getName() {
         return name;
     }
@@ -56,8 +71,10 @@ public class Countries {
         this.name = name;
     }
 
+    @NotNull
+    @NotEmpty
     @Basic
-    @Column(name = "slug", nullable = false, length = 255)
+    @Column(name = "slug", unique = true, nullable = false)
     public String getSlug() {
         return slug;
     }
@@ -67,7 +84,7 @@ public class Countries {
     }
 
     @Basic
-    @Column(name = "created_at", nullable = true)
+    @Column(name = "created_at", nullable = false, updatable = false)
     public Calendar getCreatedAt() {
         return createdAt;
     }
